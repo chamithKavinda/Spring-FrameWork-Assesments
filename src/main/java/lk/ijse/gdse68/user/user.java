@@ -12,14 +12,22 @@ public class user {
     @Qualifier("Long hair")
     private GoodGirl goodGirl;
 
-    @Autowired
-    @Wow
-    public void User(GoodGirl goodGirl) {
+
+    //Constructor Injection
+    public  user(GoodGirl goodGirl) {
         this.goodGirl = goodGirl;
     }
-    public void User() {
+
+    public  user() {
         //cant use goodGirl here because it is not initialized yet
         System.out.println(goodGirl);
+    }
+
+    //Setter Injection
+    @Autowired
+    @Wow
+    public void setGoodGirl(GoodGirl goodGirl) {
+        this.goodGirl = goodGirl;
     }
 
     //PostConstruct is used to execute a method after the bean is initialized
