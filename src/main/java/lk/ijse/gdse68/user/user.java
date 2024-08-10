@@ -9,10 +9,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class user {
-    @Autowired
     @Qualifier("Long hair")
-    @Wow
     private GoodGirl goodGirl;
+
+    @Autowired
+    @Wow
+    public void User(GoodGirl goodGirl) {
+        this.goodGirl = goodGirl;
+    }
+    public void User() {
+        //cant use goodGirl here because it is not initialized yet
+        System.out.println(goodGirl);
+    }
 
     //PostConstruct is used to execute a method after the bean is initialized
     @PostConstruct
