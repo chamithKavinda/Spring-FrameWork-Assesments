@@ -1,5 +1,6 @@
 package lk.ijse.gdse68;
 
+import lk.ijse.gdse68.aop.Transaction;
 import lk.ijse.gdse68.beans.TestBeans;
 import lk.ijse.gdse68.config.Config;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -20,11 +21,16 @@ public class AppInit {
 //        System.out.println("customer class is singleton " + isSingletonCustomer);
 //        context.registerShutdownHook();
 
-        TestBeans testBeans = (TestBeans)context.getBean("TestBeans");
+//        TestBeans testBeans = (TestBeans)context.getBean("TestBeans");
         ConfigurableBeanFactory beanFactory = context.getBeanFactory();
-        boolean isSingletonTest = beanFactory.isSingleton("TestBeans");
-        System.out.println(testBeans);
-        System.out.println("Is test singleton: "+isSingletonTest);
+//        boolean isSingletonTest = beanFactory.isSingleton("TestBeans");
+//        System.out.println(testBeans);
+//        System.out.println("Is test singleton: "+isSingletonTest);
+
+        Transaction transaction = (Transaction)context.getBean("transaction");
+        transaction.startTransaction();
+        transaction.endTransaction();
+        context.registerShutdownHook();
 
         context.close();
     }
