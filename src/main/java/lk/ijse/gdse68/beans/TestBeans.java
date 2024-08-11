@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 //If you did not give a name to the bean it will take the class name as the bean name
 //Eg: TestBeans -> testBeans
 @Component("TestBeans")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TestBeans implements BeanNameAware, BeanFactoryAware,
         ApplicationContextAware, InitializingBean, DisposableBean {
     @Override
@@ -29,7 +30,7 @@ public class TestBeans implements BeanNameAware, BeanFactoryAware,
     //To clean up resources (eg: closing a database connection)
     @Override
     public void destroy() throws Exception {
-        System.out.println("Hello World");
+        System.out.println("mn ynoooo");
     }
 
     //This is not a part of spring framework its additional
@@ -37,7 +38,7 @@ public class TestBeans implements BeanNameAware, BeanFactoryAware,
     //You can use this annotation
     @PreDestroy
     public void customDestroy(){
-        System.out.println("Custom destroy method");
+        System.out.println(" mn ynoo with Custom destroy method");
     }
 
     @Override
