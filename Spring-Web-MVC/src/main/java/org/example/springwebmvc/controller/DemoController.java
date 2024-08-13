@@ -17,6 +17,11 @@ public class DemoController {
         return "DemoController run perfectly with :"+id;
     }
 
+    @GetMapping(params = "test=all")
+    public String params() {
+        return "All are tested";
+    }
+
     @GetMapping
     public String otherTest(){
         return "Other test";
