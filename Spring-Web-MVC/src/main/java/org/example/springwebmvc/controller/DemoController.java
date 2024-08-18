@@ -1,5 +1,6 @@
 package org.example.springwebmvc.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/demo")
@@ -32,5 +33,10 @@ public class DemoController {
     @PostMapping(params = {"name","quantity"})
     public String paramData(@RequestParam("name") String param01,@RequestParam ("quantity") String param02) {
         return "Param data are "+ param01 + " and " + param02;
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String saveJSON(){
+        return "Save JSON";
     }
 }
