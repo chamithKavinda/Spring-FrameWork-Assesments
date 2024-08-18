@@ -1,5 +1,6 @@
 package org.example.springwebmvc.controller;
 
+import org.example.springwebmvc.dto.Item;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -60,6 +61,12 @@ public class DemoController {
     @PostMapping(value = "/multimapparams", params = {"id","desc"})
     public String handleMultiMaps(@RequestParam ("id") String id, @RequestParam ("desc")String desc, @RequestParam MultiValueMap<String,String> params){
         System.out.println(params);
+        return "Handle Maps with params "+params;
+    }
+
+    @PostMapping(value = "/multimapparamstodto", params = {"id","desc"})
+    public String handleMultiMapsWithDTO(@RequestParam ("id") String id, @RequestParam ("desc")String desc, @RequestParam MultiValueMap<String,String> params, Item item){
+        System.out.println(item);
         return "Handle Maps with params "+params;
     }
 }
