@@ -1,6 +1,7 @@
 package org.example.springwebmvc.controller;
 
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/demo")
@@ -38,5 +39,13 @@ public class DemoController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public String saveJSON(){
         return "Save JSON";
+    }
+
+    @PostMapping("/dynamic/{value:\\d{2}}")
+    public ResponseEntity<String> returnDynamicData(@PathVariable ("value") int incomingValue){
+        if(incomingValue % 2 == 0){
+            return ResponseEntity.ok("Dynamic data are even");
+        }
+        return ResponseEntity.ok("Dynamic data are odd");
     }
 }
