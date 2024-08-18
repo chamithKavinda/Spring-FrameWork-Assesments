@@ -1,5 +1,6 @@
 package org.example.springwebmvc.controller;
 
+import org.example.springwebmvc.dto.Customer;
 import org.example.springwebmvc.dto.Item;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -68,5 +69,16 @@ public class DemoController {
     public String handleMultiMapsWithDTO(@RequestParam ("id") String id, @RequestParam ("desc")String desc, @RequestParam MultiValueMap<String,String> params, Item item){
         System.out.println(item);
         return "Handle Maps with params "+params;
+    }
+
+    @PostMapping(
+            value = "/customer",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    public String JSONToDTO(@RequestBody Customer customer){
+        System.out.println(customer.getId());
+        System.out.println(customer.getName());
+        System.out.println(customer.getEmail());
+        return "Convert success";
     }
 }
